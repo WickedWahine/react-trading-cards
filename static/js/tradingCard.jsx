@@ -50,6 +50,7 @@ const tradingCardData = [
   },
 ];
 
+//Define TradingCard component
 function TradingCard(props) {
   return (
     <div className="card">
@@ -59,26 +60,37 @@ function TradingCard(props) {
     </div>
   );
 }
-function TradingCardContainer() {
-  const paragraphs = [];
 
-  for (const card of tradingCardData) {
-    paragraphs.push(<p>{card.name}</p>);
-    paragraphs.push(<p>{card.skill}</p>);
+//define TradingCardContainer component
+function TradingCardContainer() {
+  const tradingCards = [];
+
+  for (const currentCard of tradingCardData) {
+    tradingCards.push(<TradingCard
+                        name={currentCard.name}
+                        skill={currentCard.skill}
+                        imgUrl={currentCard.imgUrl}
+                      />
+    );
   }
 
   return (
     <React.Fragment>
-      {paragraphs}
+      {tradingCards}
     </React.Fragment>
   );
 }
-//Note for Sarah: next class start from "Before you re-render your page, stop and read over this code carefully with your pair."
 
 ReactDOM.render(
   <TradingCardContainer />,
-  document.querySelector('#container')
-);
+  document.querySelector("#all-cards")
+)
+
+// //Render TradingCard
+// ReactDOM.render(
+//     <TradingCard name="Balloonicorn" imgUrl="/static/img/balloonicorn.jpg" skill="video games" />,
+//     document.querySelector("#balloonicorn")
+// );
 
 // ReactDOM.render(
 //   (
@@ -111,26 +123,4 @@ ReactDOM.render(
 //     />
 //   ),
 //   document.querySelector('#llambda')
-// );
-
-// ReactDOM.render(
-//   (
-//     <TradingCard
-//       name="Polymorphism"
-//       skill="shape shifting"
-//       imgUrl="/static/img/polymorphism.jpeg"
-//     />
-//   ),
-//   document.querySelector('#polymorphism')
-// );
-
-// ReactDOM.render(
-//   (
-//     <TradingCard
-//       name="Shortstack Overflow"
-//       skill="melt butter"
-//       imgUrl="/static/img/shortstack-overflow.jpeg"
-//     />
-//   ),
-//   document.querySelector('#shortstack-overflow')
 // );
